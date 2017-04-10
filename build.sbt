@@ -127,6 +127,13 @@ lazy val core = crossProject
     "org.scalatest" %%% "scalatest" % scalaTestVersion % "test"))
   .settings(algebraSettings: _*)
   .settings(sourceGenerators in Compile += (sourceManaged in Compile).map(Boilerplate.gen).taskValue)
+  .jvmConfigure(
+    _.settings(
+      scalaVersion := dottyLatestNightlyBuild.get,
+      scalacOptions := Seq("-language:Scala2")
+    )
+    .enablePlugins(DottyPlugin)
+  )
 
 lazy val coreJVM = core.jvm
 lazy val coreJS = core.js
