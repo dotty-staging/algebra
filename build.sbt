@@ -124,7 +124,7 @@ lazy val core = crossProject
   .settings(libraryDependencies ++= Seq(
     "org.typelevel" %%% "cats-kernel" % catsVersion,
     "org.scalacheck" %%% "scalacheck" % scalaCheckVersion % "test",
-    "org.scalatest" %%% "scalatest" % scalaTestVersion % "test"))
+    "org.scalatest" %%% "scalatest" % scalaTestVersion % "test").map(_.withDottyCompat()))
   .settings(algebraSettings: _*)
   .settings(sourceGenerators in Compile += (sourceManaged in Compile).map(Boilerplate.gen).taskValue)
   .jvmConfigure(
@@ -132,7 +132,6 @@ lazy val core = crossProject
       scalaVersion := dottyLatestNightlyBuild.get,
       scalacOptions := Seq("-language:Scala2")
     )
-    .enablePlugins(DottyPlugin)
   )
 
 lazy val coreJVM = core.jvm
