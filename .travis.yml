@@ -3,6 +3,3 @@ script:
   - sbt coreJVM/compile "last coreJVM/compile:compileIncremental"
 jdk:
   - oraclejdk8
-env:
-  matrix:
-    - COMPILERVERSION=0.1.1-20170409-7294180-NIGHTLY
