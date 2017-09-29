@@ -131,7 +131,7 @@ lazy val core = crossProject(JSPlatform, JVMPlatform)
   .settings(algebraSettings: _*)
   .settings(sourceGenerators in Compile += (sourceManaged in Compile).map(Boilerplate.gen).taskValue)
 
-lazy val coreJVM = core.jvm
+lazy val coreJVM = core.jvm.settings(dottySettings)
 lazy val coreJS = core.js
 
 lazy val laws = crossProject(JSPlatform, JVMPlatform)
@@ -249,4 +249,10 @@ credentials ++= (for {
 
 credentials += Credentials(
   Option(System.getProperty("build.publish.credentials")) map (new File(_)) getOrElse (Path.userHome / ".ivy2" / ".credentials")
+)
+
+lazy val dottySettings = List(
+  scalaVersion := dottyLatestNightlyBuild.get,
+  libraryDependencies := libraryDependencies.value.map(_.withDottyCompat(scalaVersion.value)),
+  scalacOptions := List("-language:Scala2")
 )
