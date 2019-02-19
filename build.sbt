@@ -259,7 +259,6 @@ credentials ++= (for {
 } yield Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password)).toSeq
 
 lazy val dottySettings = List(
-  scalaVersion := dottyLatestNightlyBuild.get,
   libraryDependencies := libraryDependencies.value.map(_.withDottyCompat(scalaVersion.value)),
   scalacOptions := List("-language:Scala2")
 )
