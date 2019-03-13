@@ -12,7 +12,7 @@ trait BigDecimalInstances extends cats.kernel.instances.BigDecimalInstances {
 }
 
 class BigDecimalAlgebra(mc: MathContext) extends Field[BigDecimal] with Serializable {
-  def this() = this(MathContext.UNLIMITED)
+  def this() = this(MathContext.UNLIMITED.nn)
 
   val zero: BigDecimal = BigDecimal(0, mc)
   val one: BigDecimal = BigDecimal(1, mc)

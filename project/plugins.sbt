@@ -9,4 +9,4 @@ addSbtPlugin("com.typesafe"      % "sbt-mima-plugin" % "0.1.18")
 addSbtPlugin("org.scoverage"     % "sbt-scoverage"   % "1.5.1")
 addSbtPlugin("pl.project13.scala" % "sbt-jmh"        % "0.3.3")
 
-addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.2.0")
+addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.2.7-SNAPSHOT")
