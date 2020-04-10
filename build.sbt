@@ -253,5 +253,5 @@ credentials += Credentials(
 
 lazy val dottySettings = List(
   libraryDependencies := libraryDependencies.value.map(_.withDottyCompat(scalaVersion.value)),
-  scalacOptions += "-language:Scala2Compat"
+  scalacOptions += "-source:3.0-migration"
 )
